@@ -1,7 +1,10 @@
 {
   "name": "one-figma-shortcut-a-day",
+  "description": "Learn a Figma shortcut everyday, and become a Figma Master.",
   "version": "0.1.0",
+  "homepage": "https://github.com/richardguerre/one-figma-shortcut-a-day",
   "private": false,
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",

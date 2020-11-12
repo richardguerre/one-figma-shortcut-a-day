@@ -7,13 +7,6 @@ import config from 'config';
 
 const root = document.createElement('div');
 root.id = config.name + '-root';
+document.body.prepend(root);
 
-const figmaContainer = document.getElementsByClassName(
-  config.figmaContainerName
-)[0];
-if (figmaContainer) {
-  figmaContainer.prepend(root);
-  ReactDOM.render(<Shortcut />, root);
-} else {
-  ReactDOM.render(<Shortcut />, document.getElementById('root'));
-}
+ReactDOM.render(<Shortcut />, root);

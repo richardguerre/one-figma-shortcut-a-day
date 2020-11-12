@@ -1,6 +1,12 @@
 .NotificationText {
   min-width: 135px;
+  margin: 0;
   margin-right: 5px;
+
+  p {
+    margin: 0;
+  }
+
   .subtext {
     color: var(--text-secondary) !important;
   }

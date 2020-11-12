@@ -2,9 +2,16 @@
   "manifest_version": 2,
   "name": "One Figma Shortcut a Day",
   "version": "0.1.0",
+  "description": "Learn a Figma shortcut everyday, and become a Figma Master.",
+  "icons": {
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "author": "Richard Guerre",
   "content_scripts": [
     {
-      "matches": ["*://*.figma.com/file/*"],
+      "matches": ["*://*.figma.com/*"],
       "css": [],
       "js": []
     }

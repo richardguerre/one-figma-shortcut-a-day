@@ -10,6 +10,7 @@ import config from 'config';
 import ActionButtons from 'components/ActionButtons/ActionButtons';
 
 const Shortcut = () => {
+  const [show, setShow] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [index, setIndex] = useState(0);
@@ -25,7 +26,7 @@ const Shortcut = () => {
 
   const handleDismiss = () => {
     setDismissed(true);
-    // storage.set('dismissed', true);
+    // storage.set('show', true);
   };
 
   useEffect(() => {
@@ -43,18 +44,47 @@ const Shortcut = () => {
         storage.set('prevDay', new Date().getDate);
       } else if (prevDay !== new Date().getDate()) {
         setIndex((shortcutIndex + 1) % config.macShortcuts.length);
+        setDismissed(false);
         storage.set('shortcutIndex', shortcutIndex + 1);
         storage.set('prevDay', new Date().getDate());
       }
-      // setDismissed(!!(await storage.get('dismissed')));f
+      // setDismissed(!!(await storage.get('show')));f
     };
 
     init();
-
     // eslint-disable-next-line
   }, []);
 
-  if (dismissed) return <></>;
+  useEffect(() => {
+    if (dismissed) {
+      const interval = setInterval(() => {
+        if (!window.location.pathname.startsWith('/file/')) {
+          setDismissed(false);
+          setShow(false);
+          clearInterval(interval);
+        }
+      }, 1e4);
+      return () => clearInterval(interval);
+    } else if (!show) {
+      const interval = setInterval(() => {
+        if (window.location.pathname.startsWith('/file/')) {
+          setShow(true);
+          clearInterval(interval);
+        }
+      }, 1e3);
+      return () => clearInterval(interval);
+    } else {
+      const interval = setInterval(() => {
+        if (!window.location.pathname.startsWith('/file/')) {
+          setShow(false);
+          clearInterval(interval);
+        }
+      }, 1e4);
+      return () => clearInterval(interval);
+    }
+  }, [show, dismissed]);
+
+  if (!show || dismissed) return <></>;
 
   return (
     <div

@@ -2,6 +2,7 @@ const config = {
   name: 'one-figma-shortcut-a-day',
   figmaContainerName: 'in_app_page--content--2V_He',
   macShortcuts: [
+    { label: 'Show all shortcuts', keys: '⌃\n⇧\n?' },
     {
       label:
         'Show/Hide UI\nPress it now to quickly hide the panes and focus on your work',

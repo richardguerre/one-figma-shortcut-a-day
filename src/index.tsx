@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import Shortcut from './Shortcut';
 
+import './index.scss';
+import config from 'config';
+
+const rootName = config.name + '-root';
+
 const root = document.createElement('div');
-root.id = 'one-figma-shortcut-a-day-root';
+root.id = rootName;
 document.body.appendChild(root);
 
-ReactDOM.render(
-  <Shortcut />,
-  document.getElementById('one-figma-shortcut-a-day-root')
-);
+ReactDOM.render(<Shortcut />, document.getElementById(rootName));

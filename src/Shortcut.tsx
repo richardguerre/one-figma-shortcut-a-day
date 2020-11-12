@@ -1,45 +1,67 @@
 import React, { useEffect, useState } from 'react';
 import { useStorage } from 'lib/hooks';
 
+import NotificationText from 'components/NotificationText/NotificationText';
+import ShortcutKeys from 'components/ShortcutKeys/ShortcutKeys';
+import Icon from 'components/Icon/Icon';
+
 import './Shortcut.scss';
 import config from 'config';
+import ActionButtons from 'components/ActionButtons/ActionButtons';
 
 const Shortcut = () => {
   const [dismissed, setDismissed] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [index, setIndex] = useState(83);
   const storage = useStorage();
+
+  const handleSkip = () => {
+    setIndex(prev => prev + 1);
+  };
 
   const handleDismiss = () => {
     setDismissed(true);
+    // storage.set('dismissed', true);
   };
 
   // useEffect(() => {
-  //   const initDismissed = async () => {
-  //     setDismissed(!!(await storage.get('dismissed')));
+  //   const init = async () => {
+  //     const [shortcutIndex, prevDay] = await Promise.all([
+  //       storage.get('shortcutIndex'),
+  //       storage.get('prevDay'),
+  //     ]);
+
+  //     if (!prevDay || !shortcutIndex) {
+  //       setIndex(0);
+  //       storage.set('shortcutIndex', 0);
+  //       storage.set('prevDay', new Date());
+  //     } else if (new Date(prevDay).getDate() !== new Date().getDate()) {
+  //       setIndex(shortcutIndex + 1);
+  //       storage.set('shortcutIndex', shortcutIndex + 1);
+  //       storage.set('prevDay', new Date());
+  //     }
+  //     // setDismissed(!!(await storage.get('dismissed')));f
   //   };
 
-  //   initDismissed();
+  //   init();
   // }, [storage]);
 
   if (dismissed) return <></>;
 
   return (
-    <div className="Shortcut">
-      <div className="Icon"></div>
-      <div className="NotificationText">
-        <p>Today's Shortcut</p>
-        <p className="UI11">{config.macShortcuts[7].label}</p>
-      </div>
-      <div className="ShortcutKeys">
-        <div className="ShortcutKey">cmd</div>
-        and
-        <div className="ShortcutKey">opt</div>
-      </div>
-      <div className="ActionButtons">
-        <button className="ActionButton">Skip</button>
-        <button className="ActionButton" onClick={handleDismiss}>
-          Dismiss
-        </button>
-      </div>
+    <div
+      className="Shortcut"
+      onMouseOver={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <Icon />
+      <NotificationText label={config.macShortcuts[index].label} />
+      <ShortcutKeys keys={config.macShortcuts[index].keys} />
+      <ActionButtons
+        className={hovered ? 'fade-in' : 'fade-out'}
+        onSkip={handleSkip}
+        onDismiss={handleDismiss}
+      />
     </div>
   );
 };

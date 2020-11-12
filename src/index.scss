@@ -1,35 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-#one-figma-shortcut-a-day-root {
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
-  }
-
-  p {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .UI12 {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-  }
-
-  .UI11 {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: normal;
-    font-size: 11px;
-    line-height: 16px;
-
-    letter-spacing: 0.005em;
-  }
+:root {
+  --background-HUD: #222222;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
 }
+
+// #one-figma-shortcut-a-day-root {
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+}
+
+p {
+  @extend .UI12-Neg;
+}
+
+span {
+  @extend .UI12-Neg;
+}
+
+.UI12-Neg {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-primary);
+}
+
+.UI11-Neg {
+  @extend .UI12-Neg;
+  font-size: 11px;
+  letter-spacing: 0.005em;
+}
+// }

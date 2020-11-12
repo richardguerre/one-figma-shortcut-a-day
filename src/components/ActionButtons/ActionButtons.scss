@@ -1,0 +1,28 @@
+.ActionButtons {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 71px;
+  background-color: var(--background-HUD);
+  filter: drop-shadow(-4px 0px 4px rgba(0, 0, 0, 0.25));
+
+  display: flex;
+  flex-direction: column;
+
+  button {
+    font-size: 11px;
+    height: 50%;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    border-left: 1px solid var(--text-secondary);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:first-child {
+      border-bottom: 1px solid var(--text-secondary);
+    }
+  }
+}

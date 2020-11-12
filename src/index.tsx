@@ -5,10 +5,15 @@ import Shortcut from './Shortcut';
 import './index.scss';
 import config from 'config';
 
-const rootName = config.name + '-root';
-
 const root = document.createElement('div');
-root.id = rootName;
-document.body.appendChild(root);
+root.id = config.name + '-root';
 
-ReactDOM.render(<Shortcut />, document.getElementById(rootName));
+const figmaContainer = document.getElementsByClassName(
+  config.figmaContainerName
+)[0];
+if (figmaContainer) {
+  figmaContainer.prepend(root);
+  ReactDOM.render(<Shortcut />, root);
+} else {
+  ReactDOM.render(<Shortcut />, document.getElementById('root'));
+}

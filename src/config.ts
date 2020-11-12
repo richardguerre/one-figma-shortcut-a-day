@@ -1,5 +1,6 @@
 const config = {
   name: 'one-figma-shortcut-a-day',
+  figmaContainerName: 'in_app_page--content--2V_He',
   macShortcuts: [
     {
       label:

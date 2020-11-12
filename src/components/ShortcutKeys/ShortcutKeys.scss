@@ -1,0 +1,31 @@
+.ShortcutKeys {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 16px;
+  .key {
+    box-sizing: border-box;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 4px;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--text-secondary);
+    border-radius: 2px;
+    color: var(--text-secondary);
+
+    margin-right: 3px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .connectingWord {
+    margin-left: 2px;
+    margin-right: 5px;
+    color: var(--text-secondary);
+  }
+}

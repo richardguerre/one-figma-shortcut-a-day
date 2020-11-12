@@ -14,7 +14,7 @@ const ActionButtons = ({
   onSkip: handleSkip,
 }: Props) => {
   return (
-    <div className={'ActionButtons ' + className}>
+    <div className={`ActionButtons ${className}`}>
       <button onClick={handleSkip}>Skip</button>
       <button onClick={handleDismiss}>Dismiss</button>
     </div>

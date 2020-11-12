@@ -1,7 +1,7 @@
 import config from 'config';
 
 export const useStorage = () => {
-  const prefix = config.name;
+  const prefix = config.name + '-';
 
   const get = (key: string) => {
     return new Promise<any>(resolve => {

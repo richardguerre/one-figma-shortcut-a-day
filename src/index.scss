@@ -6,33 +6,31 @@
   --text-secondary: #aaaaaa;
 }
 
-// #one-figma-shortcut-a-day-root {
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
-}
+#one-figma-shortcut-a-day-root {
+  * {
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
 
-p {
-  @extend .UI12-Neg;
-}
+  p {
+    @extend .UI12-Neg;
+  }
 
-span {
-  @extend .UI12-Neg;
-}
+  span {
+    @extend .UI12-Neg;
+  }
 
-.UI12-Neg {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--text-primary);
-}
+  .UI12-Neg {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--text-primary);
+  }
 
-.UI11-Neg {
-  @extend .UI12-Neg;
-  font-size: 11px;
-  letter-spacing: 0.005em;
+  .UI11-Neg {
+    @extend .UI12-Neg;
+    font-size: 11px;
+    letter-spacing: 0.005em;
+  }
 }
-// }

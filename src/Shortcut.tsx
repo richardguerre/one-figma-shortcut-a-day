@@ -12,11 +12,15 @@ import ActionButtons from 'components/ActionButtons/ActionButtons';
 const Shortcut = () => {
   const [dismissed, setDismissed] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const [index, setIndex] = useState(83);
+  const [index, setIndex] = useState(0);
+
   const storage = useStorage();
 
   const handleSkip = () => {
-    setIndex(prev => prev + 1);
+    setIndex(prev => {
+      storage.set('shortcutIndex', prev + 1);
+      return (prev + 1) % config.macShortcuts.length;
+    });
   };
 
   const handleDismiss = () => {
@@ -24,27 +28,31 @@ const Shortcut = () => {
     // storage.set('dismissed', true);
   };
 
-  // useEffect(() => {
-  //   const init = async () => {
-  //     const [shortcutIndex, prevDay] = await Promise.all([
-  //       storage.get('shortcutIndex'),
-  //       storage.get('prevDay'),
-  //     ]);
+  useEffect(() => {
+    const init = async () => {
+      const [shortcutIndex, prevDay] = await Promise.all([
+        storage.get('shortcutIndex'),
+        storage.get('prevDay'),
+      ]);
 
-  //     if (!prevDay || !shortcutIndex) {
-  //       setIndex(0);
-  //       storage.set('shortcutIndex', 0);
-  //       storage.set('prevDay', new Date());
-  //     } else if (new Date(prevDay).getDate() !== new Date().getDate()) {
-  //       setIndex(shortcutIndex + 1);
-  //       storage.set('shortcutIndex', shortcutIndex + 1);
-  //       storage.set('prevDay', new Date());
-  //     }
-  //     // setDismissed(!!(await storage.get('dismissed')));f
-  //   };
+      setIndex(shortcutIndex);
 
-  //   init();
-  // }, [storage]);
+      if (!prevDay || !shortcutIndex) {
+        setIndex(0);
+        storage.set('shortcutIndex', 0);
+        storage.set('prevDay', new Date().getDate);
+      } else if (prevDay !== new Date().getDate()) {
+        setIndex((shortcutIndex + 1) % config.macShortcuts.length);
+        storage.set('shortcutIndex', shortcutIndex + 1);
+        storage.set('prevDay', new Date().getDate());
+      }
+      // setDismissed(!!(await storage.get('dismissed')));f
+    };
+
+    init();
+
+    // eslint-disable-next-line
+  }, []);
 
   if (dismissed) return <></>;
 

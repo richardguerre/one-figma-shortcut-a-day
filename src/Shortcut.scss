@@ -1,5 +1,6 @@
 .Shortcut {
   position: absolute;
+  z-index: 12;
   bottom: 24px;
   right: 84px;
   width: 320px;
@@ -11,7 +12,7 @@
 
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--text-primary);
 
   @keyframes fade-out {
     from {

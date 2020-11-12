@@ -1,24 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-body {
-  margin: 0;
-  font-family: 'Inter', 'Roboto', 'Oxygen', 'Helvetica Neue', sans-serif;
-}
+#one-figma-shortcut-a-day-root {
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  }
 
-p {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 16px;
-}
+  p {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+  }
 
-sub {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 11px;
-  line-height: 16px;
+  sub {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
 
-  letter-spacing: 0.005em;
+    letter-spacing: 0.005em;
+  }
 }

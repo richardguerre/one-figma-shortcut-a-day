@@ -19,7 +19,7 @@ const Shortcut = () => {
 
   const handleSkip = () => {
     setIndex(prev => {
-      storage.set('shortcutIndex', prev + 1);
+      storage.set('shortcutIndex', (prev + 1).toString());
       return (prev + 1) % config.macShortcuts.length;
     });
   };
@@ -36,17 +36,18 @@ const Shortcut = () => {
         storage.get('prevDay'),
       ]);
 
-      setIndex(shortcutIndex);
+      setIndex(Number(shortcutIndex));
 
+      const todaysDate = new Date().getDate().toString();
       if (!prevDay || !shortcutIndex) {
         setIndex(0);
-        storage.set('shortcutIndex', 0);
-        storage.set('prevDay', new Date().getDate);
-      } else if (prevDay !== new Date().getDate()) {
-        setIndex((shortcutIndex + 1) % config.macShortcuts.length);
+        storage.set('shortcutIndex', '0');
+        storage.set('prevDay', todaysDate);
+      } else if (prevDay !== todaysDate) {
+        setIndex((Number(shortcutIndex) + 1) % config.macShortcuts.length);
         setDismissed(false);
         storage.set('shortcutIndex', shortcutIndex + 1);
-        storage.set('prevDay', new Date().getDate());
+        storage.set('prevDay', todaysDate);
       }
       // setDismissed(!!(await storage.get('show')));f
     };

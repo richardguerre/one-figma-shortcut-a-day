@@ -4,19 +4,11 @@ export const useStorage = () => {
   const prefix = config.name + '-';
 
   const get = (key: string) => {
-    return new Promise<any>(resolve => {
-      chrome.storage.local.get([prefix + key], result => {
-        resolve(result[prefix + key]);
-      });
-    });
+    return window.localStorage.getItem(prefix + key);
   };
 
-  const set = (key: string, value: any) => {
-    return new Promise(resolve => {
-      chrome.storage.local.set({ [prefix + key]: value }, () => {
-        resolve();
-      });
-    });
+  const set = (key: string, value: string) => {
+    return window.localStorage.setItem(prefix + key, value);
   };
 
   return { get, set };

@@ -16,6 +16,5 @@
       "css": ["main.css"],
       "js": ["runtime-main.js", "2.js", "main.js"]
     }
-  ],
-  "permissions": ["storage"]
+  ]
 }

@@ -26,7 +26,6 @@ const Shortcut = () => {
 
   const handleDismiss = () => {
     setDismissed(true);
-    // storage.set('show', true);
   };
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const Shortcut = () => {
         storage.get('prevDay'),
       ]);
 
-      setIndex(Number(shortcutIndex));
+      const shortcutNum = Number(shortcutIndex);
 
       const todaysDate = new Date().getDate().toString();
       if (!prevDay || !shortcutIndex) {
@@ -44,12 +43,11 @@ const Shortcut = () => {
         storage.set('shortcutIndex', '0');
         storage.set('prevDay', todaysDate);
       } else if (prevDay !== todaysDate) {
-        setIndex((Number(shortcutIndex) + 1) % config.macShortcuts.length);
+        setIndex((shortcutNum + 1) % config.macShortcuts.length);
         setDismissed(false);
-        storage.set('shortcutIndex', shortcutIndex + 1);
+        storage.set('shortcutIndex', (shortcutNum + 1).toString());
         storage.set('prevDay', todaysDate);
       }
-      // setDismissed(!!(await storage.get('show')));f
     };
 
     init();

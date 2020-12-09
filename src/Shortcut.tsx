@@ -47,6 +47,8 @@ const Shortcut = () => {
         setDismissed(false);
         storage.set('shortcutIndex', (shortcutNum + 1).toString());
         storage.set('prevDay', todaysDate);
+      } else {
+        setIndex(shortcutNum);
       }
     };
 
